@@ -25,9 +25,12 @@ const Board = () => {
       if(state[a] !== null && state[a] == state[b] && state[a] === state[c]){
         return state[a]
       } 
-      // else if(!state.includes(null)){
-      //   return "Game Draw"
-      // }
+      
+    }
+
+    // draw
+    if(!state.includes(null)){
+      return "draw";
     }
 
     return false;
@@ -53,7 +56,7 @@ const Board = () => {
     return (
       <div className="board-container">
         {isWinner ? (
-          <>{isWinner} won the game 
+          <>{isWinner === "draw" ? ( <h4>Game Draw</h4> ) : ( <h4>{isWinner} won the game</h4> )} 
           <button onClick={handleResetGame}>Play Again</button>
           </>
         ) : (
