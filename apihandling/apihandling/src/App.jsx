@@ -4,11 +4,13 @@ import { getPosts } from '.';
 import PostCard from './components/PostCard';
 import CardImage from './components/CardImage';
 import JokesCard from './components/JokesCard';
+import AdviseCard from './components/AdviseCard';
 
 function App() {
   const [data, setData] = useState(null);
   const [image, setImage] = useState(null);
   const [jokes, setJokes] = useState(null);
+  const [advise, setAdvise] = useState(null);
 
   // useEffect(() => {
   //   getPosts().then((posts) => setData(posts))
@@ -46,11 +48,27 @@ function App() {
     } catch (err) {
       console.error("Jokes not Found", err);
     }
+  };
+
+  const randomAdvise = async () => {
+    try {
+      const res = await fetch("https://api.adviceslip.com/advice");
+      if(!res.ok){
+        console.log("Failed to Fetch the api");
+      }
+
+      const data = await res.json();
+      setAdvise(data.slip.advice);
+      console.log(data)
+    } catch (error) {
+      console.error("Advise not Found", err.message);
+    }
   }
 
   useEffect(() => {
     fetchImage();
     randomJoke();
+    randomAdvise();
   }, [])
 
   
@@ -59,16 +77,27 @@ function App() {
 
   return (
     <>
+      <AdviseCard advise={advise} />
+      <button onClick={randomAdvise}>Next Advice</button>
 
-    <JokesCard joke={jokes}/>
-    <button onClick={randomJoke} >Next Joke</button>
+      <JokesCard joke={jokes} />
+      <button onClick={randomJoke}>Next Joke</button>
 
       <CardImage image={image} />
-      <button style={{cursor: 'pointer', borderRadius: '5px'}} onClick={() => fetchImage()} >Next Image</button>
+      <button
+        style={{ cursor: "pointer", borderRadius: "5px" }}
+        onClick={() => fetchImage()}
+      >
+        Next Image
+      </button>
 
-      {data ? data.map((e) => <PostCard key={e.id} title={e.title} body={e.body} />) : <p>No Data</p>}
+      {data ? (
+        data.map((e) => <PostCard key={e.id} title={e.title} body={e.body} />)
+      ) : (
+        <p>No Data</p>
+      )}
     </>
-  )
+  );
 }
 
 export default App

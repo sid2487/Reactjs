@@ -1,16 +1,23 @@
 import { useState } from 'react'
 import './App.css'
-import { UserProvider } from './context/UserContext'
-import Message from './components/Message'
+import { UserContext, UserProvider } from './context/UserContext'
+import { useContext } from 'react'
+import Profile from './components/Profile';
+import Login from './components/Login';
+
 
 function App() {
+  const { username } = useContext(UserContext);
 
   return (
-    <UserProvider>
-      <h1>welcome to context api demo</h1>
-      <Message />
-    </UserProvider>
+
+    <div>
+      {username ? <Profile /> : <Login />}
+    </div>
+
+
   )
-}
+};
+
 
 export default App
