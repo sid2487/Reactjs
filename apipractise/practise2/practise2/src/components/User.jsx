@@ -9,6 +9,7 @@ const User = ({user}) => {
           padding: "10px",
           borderRadius: "10px",
           backgroundColor: "grey",
+          width: "300px"
         }}
       >
         <h2 style={{ color: "black" }}>{user.name}</h2>
