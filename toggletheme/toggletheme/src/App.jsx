@@ -19,10 +19,10 @@ function App() {
 
   const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
 
-  const contextValue = { theme, toggleTheme };
+  // const contextValue = { theme, toggleTheme };
 
   return (
-    <ThemeProvider value={contextValue}>
+    <ThemeProvider value={{ theme, toggleTheme }}>
       <div
         className={`min-h-screen ${
           theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"

@@ -3,7 +3,7 @@ import { useTheme } from "../context/useTheme";
 
 
 const Card = () => {
-    const { theme, toggleTheme} = useTheme();
+    const { theme, toggleTheme } = useTheme();
 
     return (
       <div className="p-6 max-w-sm mx-auto bg-white dark:bg-gray-800 text-black dark:text-white rounded-xl shadow-md">
