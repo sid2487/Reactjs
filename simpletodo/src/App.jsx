@@ -12,10 +12,10 @@ function App() {
   // load to local storage and get from there
 
   useEffect(() => {
-    localStorage.setItem("todoItems", JSON.stringify(items));
-  }, [items])
+    localStorage.setItem("todoItems", JSON.stringify(items)); 
+  }, [items]) 
 
-  const handleClick = (e) => {
+  const handleClick = (e) => { 
     setInput(e.target.value)
   }
   // console.log(input)
@@ -38,7 +38,7 @@ function App() {
   }
 
   const handleDelete = (indexToDelete) => {
-    const updateItems = items.filter((item, index) => index !== indexToDelete);
+    const updateItems = items.filter((item, index) => index !== indexToDelete);  
     setItems(updateItems);
   }
 
@@ -88,6 +88,8 @@ function App() {
             ))}
           </ul>
         </div>
+
+        <p className="text-center ">{items.filter((item) => !item.checked).length} Todos remaining</p>
 
         <button
           className="bg-blue-500 rounded mx-2 px-2 hover:bg-blue-600 cursor-pointer w-100"
