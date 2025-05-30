@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section
-      className="bg-cover bg-no-repeat min-h-screen overflow-x-hidden"
+      className="bg-cover bg-center bg-no-repeat min-h-screen overflow-x-hidden"
       style={{
         backgroundImage:
           "url('https://cdn.prod.website-files.com/64f9ea5dc178183f58cd4436/64faf71ed874220681ab4bef_landing-hero.jpg')",
